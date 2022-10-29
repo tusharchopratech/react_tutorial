@@ -20,8 +20,9 @@ export default function Login() {
       if (response.status === 200){
         setApiResponseText("Login Success");
         console.log("Login Success");
+        console.log("Token - "+response.data.token);
         console.log(response);
-        toggleSnackbar();
+        toggleSnackbar(true);
         return;  
       }
     } catch (err) {
@@ -29,10 +30,11 @@ export default function Login() {
     }
     setApiResponseText("Login Failed!");
     console.log("Login Failed!");
+    toggleSnackbar(true);
   }
 
-  const toggleSnackbar = () => {
-    setOpenSnackBar(!openSnackBar);
+  const toggleSnackbar = (status) => {
+    setOpenSnackBar(status);
   }
 
   const handleUserId = (event) => {
@@ -79,7 +81,7 @@ export default function Login() {
         </div>
       </div>
 
-      <Snackbar open={openSnackBar} autoHideDuration={3000} message={apiResponseText} onClick={toggleSnackbar} />
+      <Snackbar open={openSnackBar} autoHideDuration={3000} message={apiResponseText} onClick={() => toggleSnackbar(false)} />
     </div>
   );
 }
