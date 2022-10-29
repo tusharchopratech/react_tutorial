@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as React from 'react';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { autheticateUser } from './rest/AuthAPI';
+import { autheticateUser } from '../rest/AuthAPI';
 import Snackbar from '@mui/material/Snackbar';
 
 
