@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import AuthService from "../settings/AuthUtils";
+import AuthService from "../../settings/AuthUtils";
 
 export const ProtectedRoute = ({ roles, permissions, children }) => {
     const auth = new AuthService();

@@ -1,1 +1,1 @@
-export const API_URL = 'https://dummyjson.com/auth';
+export const API_URL = 'https://dummyjson.com';
