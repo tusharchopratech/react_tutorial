@@ -25,6 +25,7 @@ export default function CustomDrawer() {
         ['Pending Orders', '/pending-orders'],
         ['Upload Record', '/upload-record'],
         ['User Management', '/user-management'],
+        ['Seach Product', '/search-product'],
         
     ]
 

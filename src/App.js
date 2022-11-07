@@ -5,6 +5,7 @@ import Logout from './components/Logout';
 import HomeScreen from './components/HomeScreen';
 import Products from './components/Products';
 import UserManagement from './components/UserManagement';
+import SearchProduct from './components/SearchProduct';
 import Chat from './components/Chat';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/common/ProtectedRoute";
@@ -24,6 +25,8 @@ function App() {
         
         <Route path="/chat" element={<ProtectedRoute roles={['admin', 'owner', 'user']} permissions={[]}> <WithNavAppBar> <Chat/> </WithNavAppBar></ProtectedRoute> } />
           
+        <Route path="/search-product" element={<ProtectedRoute roles={['admin', 'owner', 'user']} permissions={[]}> <WithNavAppBar> <SearchProduct/> </WithNavAppBar></ProtectedRoute> } />
+        
         <Route path="/usermanagement" element={<ProtectedRoute roles={['admin']} permissions={['read_user', 'update_user']}> <UserManagement /> </ProtectedRoute>} />
     
         <Route path="*" element={<PageNotFound404 />} />

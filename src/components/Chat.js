@@ -53,9 +53,7 @@ export default function Chat() {
             console.log("End position of List");
             fetchData();
         }
-
         // console.log("Client Height : " + event.target.clientHeight + " | Scroll Height : " + event.target.scrollHeight + " | Scroll Top : " + event.target.scrollTop);
-
     }
 
     return (
