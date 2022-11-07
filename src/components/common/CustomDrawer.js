@@ -10,55 +10,68 @@ import MailIcon from '@mui/icons-material/Mail';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
+import { useNavigate } from "react-router-dom";
 
+export default function CustomDrawer() {
 
-export default class CustomDrawer extends Component {
+    const navigate = useNavigate();
+    const drawerWidth = 240;
+   
 
+    const itemNames = [
+        ['Products', '/products'],
+        ['Chat', '/chat'],
+        ['Active Orders', '/active-orders'],
+        ['Pending Orders', '/pending-orders'],
+        ['Upload Record', '/upload-record'],
+        ['User Management', '/user-management'],
+        
+    ]
 
-    constructor(props) {
-        super(props);
-        this.drawerWidth = 240;
-    }
+    const itemNames2 = [
+        ['A', '/a'],
+        ['B', '/b'],
+        ['C', '/c-orders'],
+    ]
 
-    render() {
-        return (
-            <Drawer
-                variant="permanent"
-                sx={{
-                    width: this.drawerWidth,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: this.drawerWidth, boxSizing: 'border-box' },
-                }}
-            >
-                <Toolbar />
-                <Box sx={{ overflow: 'auto' }}>
-                    <List>
-                        {['Products', 'Chat', 'Active Orders', 'Pending Orders', 'Upload Record', 'User Management'].map((text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
-                </Box>
-            </Drawer>
-        );
-    }
+    return (
+        <Drawer
+            variant="permanent"
+            sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+            }}
+        >
+            <Toolbar />
+            <Box sx={{ overflow: 'auto' }}>
+                <List>
+                    {itemNames.map((element, index) => (
+                        <ListItem key={element[0]} disablePadding onClick={e => navigate(element[1])}>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                </ListItemIcon>
+                                <ListItemText primary={element[0]} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                        <ListItem key={text} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                </ListItemIcon>
+                                <ListItemText primary={text} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
+            </Box>
+        </Drawer>
+    )
 }
+

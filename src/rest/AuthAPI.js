@@ -10,7 +10,7 @@ export const autheticateUser = async (userId, password) => {
 }
 
 const autheticateUserWithFetch = async (userId, password) => {
-  const apiResponse = await fetch(API_URL + '/api/login', {
+  const apiResponse = await fetch(API_URL + '/auth/login', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -25,7 +25,7 @@ const autheticateUserWithFetch = async (userId, password) => {
 }
 
 const authetucateUserWithAxios = async (userId, password) => {
-  const apiResponse = await axios.post(API_URL + '/api/login', {
+  const apiResponse = await axios.post(API_URL + '/auth/login', {
     username: userId,
     password: password
   });

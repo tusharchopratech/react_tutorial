@@ -39,7 +39,6 @@ export default function Products() {
     }
   }, []);
 
-
   const renderProducts = (pageNumber) => {
     console.log(pageNumber);
     fetchData(pageNumber);
