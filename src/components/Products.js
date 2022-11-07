@@ -22,6 +22,8 @@ export default function Products() {
     try {
       let skip = (pageNumber - 1) * limit;
       let response = await getProducts({ limit: limit, skip: skip, select: 'title,category,description' });
+      console.log("Hello");
+      console.log(response);
       if (response.status === 200) {
         setTotalPages(Math.ceil(response.data.total / limit));
         let products = response.data.products;
