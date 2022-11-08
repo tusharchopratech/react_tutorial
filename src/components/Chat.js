@@ -16,7 +16,7 @@ export default function Chat() {
 
     const [currentProducts, setCurrentProducts] = useState([]);
 
-    const limit = 18;
+    const limit = 15;
     let count = 0;
 
     const fetchData = async () => {
@@ -47,13 +47,22 @@ export default function Chat() {
     }, []);
 
     const loadMoreItems = async (event) => {
-        const bottom = event.target.scrollHeight - event.target.scrollTop;
+        // console.log("I'm in scroll handler");
+        const scrollMaxHeight = event.target.scrollHeight;
+        const scrollCurrentHeight = event.target.clientHeight + event.target.scrollTop;
 
-        if (Math.abs(event.target.clientHeight - bottom) < 1) {
+        // console.log(scrollMaxHeight + " " + scrollCurrentHeight);
+
+        if (Math.ceil(scrollMaxHeight - scrollCurrentHeight) < 3) {
             console.log("End position of List");
             fetchData();
         }
-        // console.log("Client Height : " + event.target.clientHeight + " | Scroll Height : " + event.target.scrollHeight + " | Scroll Top : " + event.target.scrollTop);
+
+        // console.log(
+        //     "Client Height : " + event.target.clientHeight
+        //     + " | Scroll Height : " + event.target.scrollHeight
+        //     + " | Scroll Top : " + event.target.scrollTop
+        // );
     }
 
     return (
@@ -68,8 +77,10 @@ export default function Chat() {
                 alignItems: 'flex-start',
                 width: '100%',
                 overflowY: 'scroll'
-            }} onScroll={e => loadMoreItems(e)}>
-                <List sx={{ width: '100%' }} onScroll={e => loadMoreItems(e)}>
+            }}
+                onScroll={e => loadMoreItems(e)}
+            >
+                <List sx={{ width: '100%' }} >
                     {
                         currentProducts.map(
                             function (element, i) {
